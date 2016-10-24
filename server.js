@@ -17,14 +17,15 @@ app.use((req, res, next) => {
   next()
 })
 
-/*** Maintenance ***/
+/*** Maintenance
 app.use((req, res, next) => {
   res.render('maintenance.hbs')
-})
+}) ***/
 
 /*** Static ***/
 app.use(express.static(__dirname + '/public'))
 
+/*** HBS ***/
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear())
 hbs.registerHelper('screamIt', (text) => text.toUpperCase())
 
@@ -38,6 +39,12 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
   res.render('about.hbs', {
     pageTitle: 'About Page'
+  })
+})
+
+app.get('/projects', (req,res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects Page'
   })
 })
 
